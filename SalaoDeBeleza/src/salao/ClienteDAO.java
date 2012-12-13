@@ -14,11 +14,71 @@ public class ClienteDAO {
 	private static final String selectFindCliente = "select * from cliente where id = ?";
 	private static final String insertCliente = "insert into cliente(nome,endereco,telefone) values (?, ?, ?)";
 	private static final String deleteCliente = "delete from cliente where id = ?" ;
-//	private static final String updateCliente = "update into cliente(nome,endereco,telefone) values (?, ?, ?)";
+    private static final String selectServFunc = "select Cliente.nome as cliente,Servico.tipo as servico,Funcionario.nome as funcionario from Cliente,Servico,Funcionario,ServFunc where ServFunc.Cliente = Cliente.id and ServFunc.Funcionario = Funcionario.id and ServFunc.Servico = Servico.id";
+   
+    
+    //	private static final String updateCliente = "update into cliente(nome,endereco,telefone) values (?, ?, ?)";
 
 	// Configura essas variáveis de acordo com o seu banco
 
+    
+public List<ServFunc> consultarServFun() {
+		
+		List<ServFunc> ops = new ArrayList<ServFunc>();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Connection con = null;
+		try {
+			con = DriverManager.getConnection(
+					"jdbc:postgresql://localhost/SalaodeBeleza", "postgres",
+					"senacrs");
 
+			stmt = con.prepareStatement(selectServFunc);
+			rs = stmt.executeQuery();
+			while (rs.next()) {
+				
+				String cliente  = rs.getString("cliente");
+				String servico  = rs.getString("servico");
+				String funcionario = rs.getString("funcionario");
+				ServFunc op = new ServFunc(cliente,servico,funcionario);
+				ops.add(op);
+				
+				
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			// FIXME: comunicar erro ao programa cliente
+		} finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+				if (rs != null) {
+					stmt.close();
+				}
+				if (con != null) {
+					stmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+				// FIXME: comunicar erro ao programa cliente
+			}
+		}
+		return ops;
+	}
+    
+
+    
+    
+    
+     
+	
+    
+    
+    
+
+ 
 	public Cliente findCliente(int id) {
 	
 		Cliente cl = null;
@@ -100,6 +160,8 @@ public class ClienteDAO {
 		}
 		// FIXME: fechar conexões
 	}
+
+	
 	
 	
 	public List<Cliente> consultarCliente() {

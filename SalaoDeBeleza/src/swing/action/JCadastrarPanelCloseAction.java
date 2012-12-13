@@ -14,7 +14,7 @@ public class JCadastrarPanelCloseAction  extends AbstractAction {
 	private CardLayout cards;
 
 	public JCadastrarPanelCloseAction(JPanel principal, CardLayout cards) {
-		super("Ok");
+		super("Cancelar");
 		this.principal = principal;
 		this.cards = cards;
 	}

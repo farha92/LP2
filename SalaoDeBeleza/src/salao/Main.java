@@ -7,16 +7,27 @@ public class Main {
 
 	
 	public static void main(String[] args) {
-//seleciona
-		ClienteDAO cliente = new ClienteDAO();
+
+		ClienteDAO agendar = new ClienteDAO();        
+		System.out.println(agendar.consultarServFun());	
+
+		
+		
+		
+		
+		//seleciona
+	//	ClienteDAO cliente = new ClienteDAO();
 		//Cliente cl = cliente.findCliente(1);
 		//if (cl == null) {
 		//	System.out.println("Conta não encontrada!");
 		//} else {
 		//	System.out.println(cl);}
 			
-			
-			// Realiza a inserção aqui
+		
+		
+
+		
+		// Realiza a inserção aqui
 	//	Cliente c = new Cliente("eduarda","rua a","33302233", 0);
 	//	cliente.inserir(c);
 	//	System.out.println(c);
@@ -28,10 +39,10 @@ public class Main {
 		//System.out.println(d);
 		
 		//deleta
-		ClienteDAO clienteDao = new ClienteDAO();
-		Cliente c = clienteDao.findCliente(11);
-		System.out.println(c);
-		clienteDao.deletar(c);
+	//	ClienteDAO clienteDao = new ClienteDAO();
+		//Cliente c = clienteDao.findCliente(11);
+		//System.out.println(c);
+		//clienteDao.deletar(c);
 		
 			
 			//		FuncionarioDAO funcionario = new FuncionarioDAO();
@@ -75,6 +86,7 @@ public class Main {
 				//	System.out.println(del);
 					
 							
+		
 					}
 		
 }
